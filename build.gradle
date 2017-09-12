@@ -20,7 +20,7 @@ allprojects {
     }
     repositories {
         maven {
-            url  "https://reyhach.bintray.com/ejemplo_jcenter"
+            url  "https://reyhach.bintray.com/demo"
         }
     }
 

@@ -1,29 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jfrog.bintray'
 
-ext {
-    bintrayRepo = 'demo'
-    bintrayName = 'pojos'
 
-    publishedGroupId = 'com.reyhachy.utilities'
-    libraryName = 'Utilities'
-    artifact = 'utilities'
-
-    libraryDescription = 'Librería de prueba.'
-
-    siteUrl = 'https://github.com/reyhachy/ejemplo_jcenter'
-    gitUrl = 'https://github.com/reyhachy/ejemplo_jcenter.git'
-
-    libraryVersion = '0.0.1'
-
-    developerId = 'reyhachy'
-    developerName = 'Juan Reynaldo Escobar Miron'
-    developerEmail = 'jrescobarmiron@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
@@ -52,4 +29,64 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.+'
     testCompile 'junit:junit:4.12'
+}
+
+apply plugin: 'com.jfrog.bintray'
+group = 'com.github.reyhachy.ejemplo_jcenter' // Change this to match your package name
+version = '0.0.1'
+if (project.hasProperty("android")) {
+    // deploy aar
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+
+    task javadoc(type: Javadoc) {
+        source = android.sourceSets.main.java.srcDirs
+        classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    }
+} else {
+    // deploy jars only
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+// Bintray
+bintray {
+    user = 'reyhach'
+    key = '7e5e41b8ca09f1294a58e169b574b738869a15c8'
+
+    configurations = ['archives']
+    pkg {
+        repo = 'demo'
+        name = 'pojos'
+        version {
+            name = '0.0.1'
+            desc = 'test'
+            released  = new Date()
+            vcsTag = '0.0.1'
+        }
+        licenses = ['Apache-2.0']
+        desc = 'pojos utilizables'
+        websiteUrl = 'http://nearsoft.com'
+        vcsUrl = 'https://github.com/reyhachy/ejemplo_jcenter.git'
+        licenses = ["MIT"]
+        publish = true
+        publicDownloadNumbers = true
+        version {
+            desc = 'pojos utilizables'
+        }
+    }
 }
