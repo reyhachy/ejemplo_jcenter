@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
-
-
+apply plugin: 'com.github.dcendents.android-maven'
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
@@ -31,9 +30,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
+
 apply plugin: 'com.jfrog.bintray'
-group = 'com.github.reyhachy.ejemplo_jcenter' // Change this to match your package name
-version = '0.0.1'
+group = 'com.github.reyhac.ejemplo' // Change this to match your package name
+version = '1.0.2'// Change this to match your package name
 if (project.hasProperty("android")) {
     // deploy aar
     task sourcesJar(type: Jar) {
@@ -65,28 +65,22 @@ artifacts {
 
 // Bintray
 bintray {
-    user = 'reyhach'
-    key = '7e5e41b8ca09f1294a58e169b574b738869a15c8'
-
-    configurations = ['archives']
+    user = 'reyhac'
+    key = '54e82ce9da2e0bfc9130d5ec45f31d2c00f81657'
     pkg {
         repo = 'demo'
-        name = 'pojos'
+        name = 'com.github.reyhachy.ejemplo'
+
         version {
-            name = '0.0.1'
+            name = '1.0.2'
             desc = 'test'
             released  = new Date()
-            vcsTag = '0.0.1'
+            vcsTag = '1.0.2'
         }
+
         licenses = ['Apache-2.0']
-        desc = 'pojos utilizables'
-        websiteUrl = 'http://nearsoft.com'
         vcsUrl = 'https://github.com/reyhachy/ejemplo_jcenter.git'
-        licenses = ["MIT"]
-        publish = true
-        publicDownloadNumbers = true
-        version {
-            desc = 'pojos utilizables'
-        }
+        websiteUrl = 'https://github.com/reyhachy/ejemplo_jcenter'
     }
+    configurations = ['archives']
 }
