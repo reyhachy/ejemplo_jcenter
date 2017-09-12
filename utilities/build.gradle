@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+
+ext {
+    bintrayRepo = 'demo'
+    bintrayName = 'pojos'
+
+    publishedGroupId = 'com.reyhachy.utilities'
+    libraryName = 'Utilities'
+    artifact = 'utilities'
+
+    libraryDescription = 'Librería de prueba.'
+
+    siteUrl = 'https://github.com/reyhachy/ejemplo_jcenter'
+    gitUrl = 'https://github.com/reyhachy/ejemplo_jcenter.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'reyhachy'
+    developerName = 'Juan Reynaldo Escobar Miron'
+    developerEmail = 'jrescobarmiron@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
