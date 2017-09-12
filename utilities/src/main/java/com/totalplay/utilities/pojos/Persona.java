@@ -1,4 +1,4 @@
-package com.totalplay.ejemplorepo.pojos;
+package com.totalplay.utilities.pojos;
 
 /**
  * Created by NS-TOTALPLAY on 11/09/2017.

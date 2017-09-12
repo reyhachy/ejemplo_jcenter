@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.totalplay.ejemplorepo.pojos.Persona;
+import com.totalplay.utilities.pojos.Persona;
 
 public class MainActivity extends AppCompatActivity {
     TextView text;
