@@ -5,11 +5,7 @@ buildscript {
         jcenter()
     }
 
-    repositories {
-        maven {
-            url  "https://reyhach.bintray.com/ejemplo_jcenter"
-        }
-    }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
@@ -22,6 +18,12 @@ allprojects {
     repositories {
         jcenter()
     }
+    repositories {
+        maven {
+            url  "https://reyhach.bintray.com/ejemplo_jcenter"
+        }
+    }
+
 }
 
 task clean(type: Delete) {
