@@ -31,7 +31,34 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 group = 'com.github.reyhac' // Change this to match your package name
-version = '1.0.1'
+version = '1.0.2'
+apply plugin: 'com.github.dcendents.android-maven'
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                artifactId 'utilities'
+
+                name 'utilities'
+                description 'utilities'
+
+                developers {
+                    developer {
+                        id 'reyhac'
+                        name 'Juan Reynaldo Escobar'
+                        email 'jrescobarmiron.com'
+                    }
+                }
+                scm {
+                    connection 'https://github.com/reyhachy/ejemplo_jcenter.git'
+                    developerConnection 'https://github.com/reyhachy/ejemplo_jcenter.git'
+
+                }
+            }
+        }
+    }
+}
 apply plugin: 'com.jfrog.bintray'
 
 if (project.hasProperty("android")) {
@@ -68,13 +95,13 @@ bintray {
     key = '54e82ce9da2e0bfc9130d5ec45f31d2c00f81657'
     pkg {
         repo = 'maven'
-        name = 'pojos'
+        name = 'utilities'
 
         version {
-            name = '1.0.1'
+            name = '1.0.2'
             desc = 'test'
             released  = new Date()
-            vcsTag = '1.0.1'
+            vcsTag = '1.0.2'
         }
 
         licenses = ['Apache-2.0']
