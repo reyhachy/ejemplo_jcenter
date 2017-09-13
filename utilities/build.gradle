@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
@@ -29,11 +30,10 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     testCompile 'junit:junit:4.12'
 }
-
-
+group = 'com.github.reyhac' // Change this to match your package name
+version = '1.0.1'
 apply plugin: 'com.jfrog.bintray'
-group = 'com.github.reyhac.ejemplo' // Change this to match your package name
-version = '1.0.2'// Change this to match your package name
+
 if (project.hasProperty("android")) {
     // deploy aar
     task sourcesJar(type: Jar) {
@@ -63,19 +63,18 @@ artifacts {
     archives sourcesJar
 }
 
-// Bintray
 bintray {
     user = 'reyhac'
     key = '54e82ce9da2e0bfc9130d5ec45f31d2c00f81657'
     pkg {
-        repo = 'demo'
-        name = 'com.github.reyhachy.ejemplo'
+        repo = 'maven'
+        name = 'pojos'
 
         version {
-            name = '1.0.2'
+            name = '1.0.1'
             desc = 'test'
             released  = new Date()
-            vcsTag = '1.0.2'
+            vcsTag = '1.0.1'
         }
 
         licenses = ['Apache-2.0']
